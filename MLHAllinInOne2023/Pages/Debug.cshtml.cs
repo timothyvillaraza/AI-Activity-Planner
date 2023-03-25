@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using MLHAllinInOne2023.Models;
+using MLHAllinInOne2023.Services;
 
 namespace MLHAllinInOne2023.Pages
 {
@@ -18,17 +19,20 @@ namespace MLHAllinInOne2023.Pages
         private readonly IHttpContextAccessor _contextAccessor;
 
         public BrowserModel bParser { get; set; }
+        public WeatherService weather { get; set; }
         public DebugModel(ILogger<DebugModel> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _contextAccessor = httpContextAccessor;
+
+            weather = new WeatherService();
         }
 
         public void OnGet()
         {
             bParser = new BrowserModel(_contextAccessor);
-            
-            
+            var test = weather.getWeather(bParser.geoData.Latitude, bParser.geoData.Longitude);
+
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }

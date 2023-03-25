@@ -17,3 +17,5 @@
 <h4>Longitude : @Model.bParser.geoData.Longitude</h4>
 
 <h4>Zip : @Model.bParser.geoData.Zip</h4>
+
+<h4>@Model.weather.getWeather(Model.bParser.geoData.Latitude, Model.bParser.geoData.Longitude)</h4>
