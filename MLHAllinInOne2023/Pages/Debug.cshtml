@@ -1,0 +1,19 @@
+﻿@page
+@model DebugModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1>Debug Screen</h1>
+
+<h4>Country : @Model.bParser.geoData.Country</h4>
+
+<h4>Region : @Model.bParser.geoData.Region</h4>
+
+<h4>City : @Model.bParser.geoData.City</h4>
+
+<h4>Latitude : @Model.bParser.geoData.Latitude</h4>
+
+<h4>Longitude : @Model.bParser.geoData.Longitude</h4>
+
+<h4>Zip : @Model.bParser.geoData.Zip</h4>
