@@ -19,19 +19,19 @@ namespace MLHAllinInOne2023.Pages
         private readonly IHttpContextAccessor _contextAccessor;
 
         public BrowserModel bParser { get; set; }
-        public WeatherService weather { get; set; }
+        public WeatherModel weatherModel { get; set; }
         public DebugModel(ILogger<DebugModel> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _contextAccessor = httpContextAccessor;
 
-            weather = new WeatherService();
+            
         }
 
         public void OnGet()
         {
             bParser = new BrowserModel(_contextAccessor);
-            var test = weather.getWeather(bParser.geoData.Latitude, bParser.geoData.Longitude);
+            weatherModel = new WeatherModel(bParser.geoData.Latitude, bParser.geoData.Longitude);
 
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }

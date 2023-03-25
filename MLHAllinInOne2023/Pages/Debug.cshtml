@@ -17,5 +17,13 @@
 <h4>Longitude : @Model.bParser.geoData.Longitude</h4>
 
 <h4>Zip : @Model.bParser.geoData.Zip</h4>
+<!--
+    TODO(3) - see these h4 tags? Make one for each of the variables you created in the model
+    each line will look somehting along the lines 
+    <h4> *WeatherDataVariableName* : atModel.weatherModel._weather.WeatherDataVariableName
 
-<h4>@Model.weather.getWeather(Model.bParser.geoData.Latitude, Model.bParser.geoData.Longitude)</h4>
+    Where WeatherDataVariableName is the specific property in the model.
+    ie wind speed, temperature, humidity, etc etc. Whichever data properties you decided to use from the JSON
+-->
+
+<h4>@Model.weatherModel._jsonOutput</h4>
