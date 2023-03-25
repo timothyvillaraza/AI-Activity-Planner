@@ -17,7 +17,8 @@ namespace MLHAllinInOne2023.Models
             _jsonOutput = _weatherService.getWeather(latitude, longitude).Result;
 
             //TODO(2) deserialize the JSON data into the _weather object. See BrowserModel on how to do that.
-
+            _weather = JsonConvert.DeserializeObject<Weather>(_jsonOutput);
+            _weather.ManualParse();
         }
 
     }
