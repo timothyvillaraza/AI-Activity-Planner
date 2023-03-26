@@ -44,7 +44,7 @@ namespace MLHAllinInOne2023.Services
             };
 
             // var apiKey = _configuration.GetValue<string>("OpenAI:ApiKey");  // TODO: Setup Config File
-            var apiKey = "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";
+            var apiKey = "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";
 
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
 
