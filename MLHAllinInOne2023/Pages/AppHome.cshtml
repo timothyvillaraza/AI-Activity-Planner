@@ -9,12 +9,39 @@
  @*Checklist*@
 <h1> Interests </h1>
     <form method="post">
-        @* creates checkboxes for all pre determined intrests *@
-        <label><input type="checkbox" asp-for="art"/>Art</label><br>
-        <label><input type="checkbox" asp-for="food" />Food</label><br>
-        <label><input type="checkbox" asp-for="nature" />Nature</label><br>
-        <label><input type="checkbox" asp-for="nightlife" />Nightlife</label><br>
-        <label><input type="checkbox" asp-for="music" />Music</label><br>
+        <div class="flex flex-col space-y-2">
+            <div class="flex items-center rounded-full bg-gray-200 px-4 py-2">
+                <input type="checkbox" id="art" name="art" asp-for="art" class="mr-2">
+                <label for="art" class="text-gray-700">
+                    <i class="fa fa-paint-brush mr-2"></i>Art
+                </label>
+            </div>
+            <div class="flex items-center rounded-full bg-gray-200 px-4 py-2">
+                <input type="checkbox" id="food" name="food" asp-for="food" class="mr-2">
+                <label for="food" class="text-gray-700">
+                    <i class="fa fa-utensils mr-2"></i>Food
+                </label>
+            </div>
+            <div class="flex items-center rounded-full bg-gray-200 px-4 py-2">
+                <input type="checkbox" id="nature" name="nature" asp-for="nature" class="mr-2">
+                <label for="nature" class="text-gray-700">
+                    <i class="fa fa-tree mr-2"></i>Nature
+                </label>
+            </div>
+            <div class="flex items-center rounded-full bg-gray-200 px-4 py-2">
+                <input type="checkbox" id="nightlife" name="nightlife" asp-for="nightlife" class="mr-2">
+                <label for="nightlife" class="text-gray-700">
+                    <i class="fa fa-cocktail mr-2"></i>Nightlife
+                </label>
+            </div>
+            <div class="flex items-center rounded-full bg-gray-200 px-4 py-2">
+                <input type="checkbox" id="music" name="music" asp-for="music" class="mr-2">
+                <label for="music" class="text-gray-700">
+                    <i class="fa fa-music mr-2"></i>Music
+                </label>
+            </div>
+        </div>
+
 
 
         @*foreach (var intrest in Model.intrests)
