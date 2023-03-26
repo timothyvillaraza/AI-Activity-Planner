@@ -7,14 +7,8 @@ namespace MLHAllinInOne2023.Pages
 {
     public class AppHomeModel : PageModel
     { 
-        // checkboxes display on page 
-        public string[] intrests = {
-            "art",
-            "food",
-            "nature",
-            "nightlife",
-            "music"
-        };
+
+        public string allIntrests;
 
         [BindProperty]
         public string otherIntrests { get; set; }
@@ -29,6 +23,7 @@ namespace MLHAllinInOne2023.Pages
         [BindProperty]
         public bool music { get; set; }
 
+        // checkboxes display on page 
         public bool ShowForm { get; set; } // get request = true, post request = false
 
         public void OnGet()
@@ -39,7 +34,16 @@ namespace MLHAllinInOne2023.Pages
         public void OnPost()
         {
             ShowForm = false;
-            ViewData["Message"] = "Other Intrests: " + otherIntrests + " " + art;
+            //creates a string of the checkboxes
+            if (art) {allIntrests += "art, "; }
+            if (food) { allIntrests += "food, "; }
+            if (nature) { allIntrests += "nature, "; }
+            if (nightlife) { allIntrests += "nightlife, "; }
+            if (music) { allIntrests += "music, "; }
+
+            ViewData["intrests"] = allIntrests;
+            ViewData["otherIntrests"] = otherIntrests;
+
         }
     }
 }
