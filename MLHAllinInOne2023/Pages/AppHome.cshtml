@@ -6,18 +6,25 @@
 @if (Model.ShowForm)
 {
  @*Checklist*@
-<h1> Int </h1>
+<h1> Interests </h1>
     <form method="post">
-        @foreach (var intrest in Model.intrests)
-        {
-            
-            <input type="checkbox" id="@intrest" name="@intrest" value=@intrest>
+        @* creates checkboxes for all pre determined intrests *@
+        <label><input type="checkbox" asp-for="art"/>art</label><br>
+        <label><input type="checkbox" asp-for="food" />food</label><br>
+        <label><input type="checkbox" asp-for="nature" />nature</label><br>
+        <label><input type="checkbox" asp-for="nightlife" />nightlife</label><br>
+        <label><input type="checkbox" asp-for="music" />music</label><br>
 
-            <label for=@intrest>@intrest</label>
+
+        @*foreach (var intrest in Model.intrests)
+        {
+
+            <input type="checkbox" id="@intrest" name="@intrest" value=@intrest asp-for="art">
+            <label>@intrest</label>
 
             <br>
         }
-
+        *@
     @*Open-ended Intrests*@
         <label asp-for="otherIntrests"> Other Intrests:</label><br>
         <input type="text" id="otherIntrests" name="otherIntrests"><br>
@@ -26,5 +33,13 @@
 }
 
 <div>
-    @ViewData["Message"]
+    @*@ViewData["intrests"]
+    <br>
+    @ViewData["otherIntrests"]
+    <br>*@
+    <h1> Itinerary </h1>
+    @foreach(var response in Model.ResponseArray){
+        <h4>@response</h4>
+        <br>
+    }
 </div>
