@@ -61,11 +61,12 @@ else
     @ViewData["otherIntrests"]
     <br>*@
     <h1> Itinerary </h1>
-    @foreach (var response in Model.ResponseArray)
+    @for (var i = 0; i < Model.ResponseArray.Length; i++)
     {
-        <h4>@response</h4>
+        <h4>@Model.ResponseArray[i]</h4>
         <br>
     }
+
 </div>
 }
 
@@ -158,3 +159,5 @@ else
         color: #fff;
     }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
