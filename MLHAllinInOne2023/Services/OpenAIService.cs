@@ -12,12 +12,15 @@ namespace MLHAllinInOne2023.Services
     public interface IOpenAIService
     {
         Task<OpenAIResponse> GenerateText(string prompt);
+        Task<string> RegnerateItineraryItem(string prompt);
     }
 
     public class OpenAIService : IOpenAIService
     {
         private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
+        // var apiKey = _configuration.GetValue<string>("OpenAI:ApiKey");  // TODO: Setup Config File
+        private readonly string apiKey = "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";
 
         public OpenAIService(IConfiguration configuration, HttpClient httpClient)
         {
@@ -43,9 +46,6 @@ namespace MLHAllinInOne2023.Services
                 messages = msgs
             };
 
-            // var apiKey = _configuration.GetValue<string>("OpenAI:ApiKey");  // TODO: Setup Config File
-            var apiKey = "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";
-
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
 
             var requestJson = JsonConvert.SerializeObject(model);
@@ -58,6 +58,14 @@ namespace MLHAllinInOne2023.Services
             var openaiResponse = JsonConvert.DeserializeObject<OpenAIResponse>(responseJson);
 
             return openaiResponse;
+        }
+
+        public async Task<string> RegnerateItineraryItem(string prompt)
+        {
+            // var chatResponse = GenerateText(prompt).Result;
+            string newitineraryItem = "CALLED AND RETURNED: " + prompt;
+
+            return newitineraryItem;
         }
     }
 

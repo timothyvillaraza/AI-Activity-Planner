@@ -38,7 +38,7 @@ namespace MLHAllinInOne2023.Pages
 
         public OpenAIResponse chatResponse { get; set; }
 
-        public string allIntrests;
+        public string allIntrests = "";
 
         [BindProperty]
         public string otherIntrests { get; set; }

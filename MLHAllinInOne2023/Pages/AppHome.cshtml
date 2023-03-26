@@ -11,32 +11,32 @@
     <h1 class="text-4xl font-bold text-gray-800 py-8">Interests</h1>
 
     <form method="post">
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-art')">
-            <input type="checkbox" asp-for="art" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-art'); document.querySelector('#art').checked = this.classList.contains('selected-art')">
+            <input type="checkbox" asp-for="art" id="art" class="hidden" />
             <i class="checkbox-icon fa fa-paint-brush"></i>
             <label class="checkbox-label">Art</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-food')">
-            <input type="checkbox" asp-for="food" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-food'); document.querySelector('#food').checked = this.classList.contains('selected-food')">
+            <input type="checkbox" asp-for="food" id="food" class="hidden" />
             <i class="checkbox-icon fa fa-utensils"></i>
             <label class="checkbox-label">Food</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-nature')">
-            <input type="checkbox" asp-for="nature" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-nature'); document.querySelector('#nature').checked = this.classList.contains('selected-nature')">
+            <input type="checkbox" asp-for="nature" id="nature" class="hidden" />
             <i class="checkbox-icon fa fa-tree"></i>
             <label class="checkbox-label">Nature</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-nightlife')">
-            <input type="checkbox" asp-for="nightlife" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-nightlife'); document.querySelector('#nightlife').checked = this.classList.contains('selected-nightlife')">
+            <input type="checkbox" asp-for="nightlife" id="nightlife" class="hidden" />
             <i class="checkbox-icon fa fa-glass-martini-alt"></i>
             <label class="checkbox-label">Nightlife</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-music')">
-            <input type="checkbox" asp-for="music" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-music'); document.querySelector('#music').checked = this.classList.contains('selected-music')">
+            <input type="checkbox" asp-for="music" id="music" class="hidden" />
             <i class="checkbox-icon fa fa-music"></i>
             <label class="checkbox-label">Music</label>
         </div>
@@ -55,18 +55,38 @@
 @*Post Request View*@
 else 
 {
-<div>
-    @*@ViewData["intrests"]
-    <br>
+    <div>
+    @*
+    DEBUG: Shows selected intrests
+    @ViewData["intrests"]
     @ViewData["otherIntrests"]
-    <br>*@
-    <h1> Itinerary </h1>
-    @foreach (var response in Model.ResponseArray)
-    {
-        <h4>@response</h4>
-        <br>
-    }
-</div>
+    *@
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
+            @for (var i = 0; i < Model.ResponseArray.Length; i++)
+            {
+                @*Account for blank outputs*@
+                @if (@Model.ResponseArray[i] != "")
+                {
+                    <div class="flex items-center mb-4">
+                        <h4 class="text-lg">@Model.ResponseArray[i]</h4>
+                    </div>
+                    @if (i < Model.ResponseArray.Length - 1) // Add line divider only if it's not the last item
+                    {
+                        <hr class="my-2 border-gray-300">
+                    }
+                }
+            }
+        </div>
+        <div class="flex justify-center mt-8">
+            <form method="GET" action="/apphome" class="flex items-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Go back
+                </button>
+            </form>
+        </div>
+    </div>
+
 }
 
 <style>
@@ -158,3 +178,16 @@ else
         color: #fff;
     }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Add click event listener to each button element
+        $('button[id^="submit-"]').on('click', function () {
+            // Get the text of the adjacent h4 element
+            var responseText = $(this).siblings('h4').text();
+            alert(responseText);
+        });
+    });
+</script>
