@@ -7,98 +7,9 @@
 @if (Model.ShowForm)
 {
  @*Checklist*@
-<h1> Interests </h1>
+    <h1 class="text-4xl font-bold text-gray-800 py-8">Interests</h1>
+
     <form method="post">
-        <style>
-            /* Default style for the checkbox container */
-            .checkbox-container {
-                display: flex;
-                align-items: center;
-                border-radius: 9999px;
-                background-color: #eee;
-                padding: 8px 12px;
-                margin-bottom: 8px;
-            }
-
-                /* Style for the selected art checkbox container */
-                .checkbox-container.selected-art {
-                    background-color: #ffbb00;
-                }
-
-                /* Style for the selected food checkbox container */
-                .checkbox-container.selected-food {
-                    background-color: #1abc9c;
-                }
-
-                /* Style for the selected nature checkbox container */
-                .checkbox-container.selected-nature {
-                    background-color: #3498db;
-                }
-
-                /* Style for the selected nightlife checkbox container */
-                .checkbox-container.selected-nightlife {
-                    background-color: #9b59b6;
-                }
-
-                /* Style for the selected music checkbox container */
-                .checkbox-container.selected-music {
-                    background-color: #f44336;
-                }
-
-            /* Default style for the checkbox label */
-            .checkbox-label {
-                margin-left: 8px;
-            }
-
-            /* Style for the checkbox label when selected */
-            .checkbox-container.selected-art .checkbox-label {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-food .checkbox-label {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-nature .checkbox-label {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-nightlife .checkbox-label {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-music .checkbox-label {
-                color: #fff;
-            }
-
-            /* Style for the checkbox icon */
-            .checkbox-icon {
-                color: #555;
-                font-size: 1.2rem;
-            }
-
-            /* Style for the checkbox icon when selected */
-            .checkbox-container.selected-art .checkbox-icon {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-food .checkbox-icon {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-nature .checkbox-icon {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-nightlife .checkbox-icon {
-                color: #fff;
-            }
-
-            .checkbox-container.selected-music .checkbox-icon {
-                color: #fff;
-            }
-        </style>
-
         <div class="checkbox-container" onclick="this.classList.toggle('selected-art')">
             <input type="checkbox" asp-for="art" class="hidden" />
             <i class="checkbox-icon fa fa-paint-brush"></i>
@@ -130,20 +41,117 @@
         </div>
 
     @*Open-ended Intrests*@
-        <label asp-for="otherIntrests"> Other Intrests:</label><br>
-        <input type="text" id="otherIntrests" name="otherIntrests"><br>
-        <button type="submit">Submit</button>
+        <div class="flex flex-col space-y-4">
+            <label asp-for="otherIntrests" class="text-lg font-semibold text-gray-700">Other Interests or Special Requests:</label>
+            <div class="flex items-center border rounded-md shadow-sm">
+                <input type="text" asp-for="otherIntrests" class="flex-1 w-full px-4 py-2 text-gray-700 border-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your other interests...">
+                <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Generate Itinerary</button>
+            </div>
+        </div>
     </form>
 }
-
+else
+{
 <div>
     @*@ViewData["intrests"]
     <br>
     @ViewData["otherIntrests"]
     <br>*@
     <h1> Itinerary </h1>
-    @foreach(var response in Model.ResponseArray){
+    @foreach (var response in Model.ResponseArray)
+    {
         <h4>@response</h4>
         <br>
     }
 </div>
+}
+
+<style>
+    /* Default style for the checkbox container */
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        border-radius: 9999px;
+        background-color: #eee;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+    }
+
+        /* Style for the selected art checkbox container */
+        .checkbox-container.selected-art {
+            background-color: #ffbb00;
+        }
+
+        /* Style for the selected food checkbox container */
+        .checkbox-container.selected-food {
+            background-color: #1abc9c;
+        }
+
+        /* Style for the selected nature checkbox container */
+        .checkbox-container.selected-nature {
+            background-color: #3498db;
+        }
+
+        /* Style for the selected nightlife checkbox container */
+        .checkbox-container.selected-nightlife {
+            background-color: #9b59b6;
+        }
+
+        /* Style for the selected music checkbox container */
+        .checkbox-container.selected-music {
+            background-color: #f44336;
+        }
+
+    /* Default style for the checkbox label */
+    .checkbox-label {
+        margin-left: 8px;
+    }
+
+    /* Style for the checkbox label when selected */
+    .checkbox-container.selected-art .checkbox-label {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-food .checkbox-label {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-nature .checkbox-label {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-nightlife .checkbox-label {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-music .checkbox-label {
+        color: #fff;
+    }
+
+    /* Style for the checkbox icon */
+    .checkbox-icon {
+        color: #555;
+        font-size: 1.2rem;
+    }
+
+    /* Style for the checkbox icon when selected */
+    .checkbox-container.selected-art .checkbox-icon {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-food .checkbox-icon {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-nature .checkbox-icon {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-nightlife .checkbox-icon {
+        color: #fff;
+    }
+
+    .checkbox-container.selected-music .checkbox-icon {
+        color: #fff;
+    }
+</style>
