@@ -3,17 +3,18 @@
 
 @{
 }
+
 @if (Model.ShowForm)
 {
  @*Checklist*@
 <h1> Interests </h1>
     <form method="post">
         @* creates checkboxes for all pre determined intrests *@
-        <label><input type="checkbox" asp-for="art"/>art</label><br>
-        <label><input type="checkbox" asp-for="food" />food</label><br>
-        <label><input type="checkbox" asp-for="nature" />nature</label><br>
-        <label><input type="checkbox" asp-for="nightlife" />nightlife</label><br>
-        <label><input type="checkbox" asp-for="music" />music</label><br>
+        <label><input type="checkbox" asp-for="art"/>Art</label><br>
+        <label><input type="checkbox" asp-for="food" />Food</label><br>
+        <label><input type="checkbox" asp-for="nature" />Nature</label><br>
+        <label><input type="checkbox" asp-for="nightlife" />Nightlife</label><br>
+        <label><input type="checkbox" asp-for="music" />Music</label><br>
 
 
         @*foreach (var intrest in Model.intrests)
