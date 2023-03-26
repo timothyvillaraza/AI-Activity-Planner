@@ -11,32 +11,32 @@
     <h1 class="text-4xl font-bold text-gray-800 py-8">Interests</h1>
 
     <form method="post">
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-art')">
-            <input type="checkbox" asp-for="art" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-art'); document.querySelector('#art').checked = this.classList.contains('selected-art')">
+            <input type="checkbox" asp-for="art" id="art" class="hidden" />
             <i class="checkbox-icon fa fa-paint-brush"></i>
             <label class="checkbox-label">Art</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-food')">
-            <input type="checkbox" asp-for="food" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-food'); document.querySelector('#food').checked = this.classList.contains('selected-food')">
+            <input type="checkbox" asp-for="food" id="food" class="hidden" />
             <i class="checkbox-icon fa fa-utensils"></i>
             <label class="checkbox-label">Food</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-nature')">
-            <input type="checkbox" asp-for="nature" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-nature'); document.querySelector('#nature').checked = this.classList.contains('selected-nature')">
+            <input type="checkbox" asp-for="nature" id="nature" class="hidden" />
             <i class="checkbox-icon fa fa-tree"></i>
             <label class="checkbox-label">Nature</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-nightlife')">
-            <input type="checkbox" asp-for="nightlife" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-nightlife'); document.querySelector('#nightlife').checked = this.classList.contains('selected-nightlife')">
+            <input type="checkbox" asp-for="nightlife" id="nightlife" class="hidden" />
             <i class="checkbox-icon fa fa-glass-martini-alt"></i>
             <label class="checkbox-label">Nightlife</label>
         </div>
 
-        <div class="checkbox-container" onclick="this.classList.toggle('selected-music')">
-            <input type="checkbox" asp-for="music" class="hidden" />
+        <div class="checkbox-container" onclick="this.classList.toggle('selected-music'); document.querySelector('#music').checked = this.classList.contains('selected-music')">
+            <input type="checkbox" asp-for="music" id="music" class="hidden" />
             <i class="checkbox-icon fa fa-music"></i>
             <label class="checkbox-label">Music</label>
         </div>
@@ -56,15 +56,14 @@
 else 
 {
 <div>
-    @*@ViewData["intrests"]
-    <br>
+    @ViewData["intrests"]
     @ViewData["otherIntrests"]
-    <br>*@
-    <h1> Itinerary </h1>
+
     <div class="py-4">
         <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
         @for (var i = 0; i < Model.ResponseArray.Length; i++)
         {
+            @*Account for blank outputs*@
             @if (@Model.ResponseArray[i] != "")
             {
                 <div class="flex items-center mb-4">
