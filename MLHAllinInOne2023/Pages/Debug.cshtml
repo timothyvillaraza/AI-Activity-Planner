@@ -1,5 +1,6 @@
 ﻿@page
 @model DebugModel
+@using MLHAllinInOne2023.Services;
 @{
     ViewData["Title"] = "Error";
 }
@@ -26,4 +27,14 @@
     ie wind speed, temperature, humidity, etc etc. Whichever data properties you decided to use from the JSON
 -->
 
-<h4>@Model.weatherModel._jsonOutput</h4>
+@*<h4>@Model.weatherModel._jsonOutput</h4>*@
+@{
+    foreach(var choice in Model.chatResponse.choices)
+    {
+        <h4>Text : @choice.message.content</h4>
+    }
+}
+
+@*<h4>ChatGPTText : @Model.chatResponse.Text</h4>
+
+<h4>ChatGPTChoices : @Model.chatResponse.Choices</h4>*@

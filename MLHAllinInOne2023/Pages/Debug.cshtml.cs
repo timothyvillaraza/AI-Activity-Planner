@@ -15,24 +15,32 @@ namespace MLHAllinInOne2023.Pages
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         private readonly ILogger<DebugModel> _logger;
-
         private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IConfiguration _configuration;
+        private readonly HttpClient _httpClient;
 
         public BrowserModel bParser { get; set; }
         public WeatherModel weatherModel { get; set; }
-        public DebugModel(ILogger<DebugModel> logger, IHttpContextAccessor httpContextAccessor)
+
+        public OpenAIResponse chatResponse { get; set; }
+        public DebugModel(ILogger<DebugModel> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
         {
             _logger = logger;
             _contextAccessor = httpContextAccessor;
+            _configuration = configuration;
+            _httpClient = new HttpClient();
 
-            
         }
 
         public void OnGet()
         {
             bParser = new BrowserModel(_contextAccessor);
             weatherModel = new WeatherModel(bParser.geoData.Latitude, bParser.geoData.Longitude);
+            OpenAIService chatGPT = new OpenAIService(_configuration, _httpClient);
+            //TODO - figure out how to populate this prompt with something the user inputs
+            string prompt = "What is the meaning of life";
 
+            chatResponse = chatGPT.GenerateText(prompt).Result;
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
