@@ -8,9 +8,9 @@ namespace MLHAllinInOne2023.Pages
     public class AppHomeModel : PageModel
     {
         [BindProperty]
-        public string otherIntrests{get; set;}
-        public string[] intrests = ["art", "food", "nature", "nightlife", "music"];
-        public bool ShowForm { get; set; } //get request = true, post request = false
+        public string otherIntrests { get; set; }
+        public string[] intrests = { "art", "food", "nature", "nightlife", "music" };
+        public bool ShowForm { get; set; }//get request = true, post request = false
 
         public void OnGet()
         {

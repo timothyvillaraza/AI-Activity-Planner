@@ -5,17 +5,22 @@
 }
 @if (Model.ShowForm)
 {
+ @*Checklist*@
 <h1> Int </h1>
     <form method="post">
-        <input type="checkbox" id="intrest1" name="intrest1" value=art><label for="intrest1">art</label><br>
-        <input type="checkbox" id="intrest2" name="intrest2" value=food><label for="intrest2">food</label><br>
-        <input type="checkbox" id="intrest3" name="intrest3" value=art><label for="intrest3">nature</label><br>
-        <input type="checkbox" id="intrest4" name="intrest4" value=nightlife><label for="intrest4">nightlife</label><br>
-        <input type="checkbox" id="intrest5" name="intrest5" value=music><label for="intrest5">music</label><br>
+        @foreach (var intrest in Model.intrests)
+        {
+            
+            <input type="checkbox" id="@intrest" name="@intrest" value=@intrest>
 
+            <label for=@intrest>@intrest</label>
+
+            <br>
+        }
+
+    @*Open-ended Intrests*@
         <label asp-for="otherIntrests"> Other Intrests:</label><br>
         <input type="text" id="otherIntrests" name="otherIntrests"><br>
-
         <button type="submit">Submit</button>
     </form>
 }
