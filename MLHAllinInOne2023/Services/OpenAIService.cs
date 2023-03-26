@@ -20,7 +20,7 @@ namespace MLHAllinInOne2023.Services
         private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
         // var apiKey = _configuration.GetValue<string>("OpenAI:ApiKey");  // TODO: Setup Config File
-        private readonly string apiKey = "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";
+        private readonly string apiKey = "";
         public OpenAIService(IConfiguration configuration, HttpClient httpClient)
         {
             _configuration = configuration;
@@ -59,6 +59,7 @@ namespace MLHAllinInOne2023.Services
             return openaiResponse;
         }
 
+        // UNFINISHED - Used for new list item generation
         public async Task<string> RegnerateItineraryItem(string prompt)
         {
             // var chatResponse = GenerateText(prompt).Result;

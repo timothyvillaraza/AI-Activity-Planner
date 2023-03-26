@@ -77,11 +77,11 @@ namespace MLHAllinInOne2023.Pages
             ViewData["intrests"] = allIntrests;
             ViewData["otherIntrests"] = otherIntrests;
 
-            string prompt = @"Generate an itinerary of places to visit in a day in or around, " + bParser.geoData.City + ", " + bParser.geoData.Region +
+           string prompt = @"Generate an itinerary of places to visit in a day in or around, " + bParser.geoData.City + ", " + bParser.geoData.Region +
                 @".List places for a person interested in" + allIntrests + otherIntrests + ".Give start and end times for each place.";
 
             // DEMO PROMPT - We have to deal with reaching maximum requests for the location API
-/*            string prompt = @"Generate an itinerary of places to visit in a day in or around, " +  "Elk Grove" + ", " + "Illinois" +
+           /* string prompt = @"Generate an itinerary of places to visit in a day in or around, " + "Elk Grove" + ", " + "Illinois" +
                 @".List places for a person interested in" + allIntrests + otherIntrests + ".Give start and end times for each place.";*/
 
             chatResponse = chatGPT.GenerateText(prompt).Result;

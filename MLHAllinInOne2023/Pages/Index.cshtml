@@ -4,15 +4,16 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="bg-red-500">This is a red box.</div>
-<div class="text-center">
-    <h4>Response : @Model.ChatGPTResponse</h4>
-
-    <h1 class="display-4">Travel Guide: ...</h1>
-    <br /> 
-    <h2>Weather in ...</h2> 
-</div> 
-
-<div style="border: 5px solid black; padding: 10px;">
-  <p><br />This is some sample text in a content box.</p>
+<div class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-800 mb-8">The <span class="text-blue-500">AI Adventure Assistant</span></h1>
+        <p class="text-lg text-gray-700 mb-8">Introducing The <span class="text-blue-500">AI Adventure Assistant</span> - the ultimate travel companion that uses advanced text models to create personalized itineraries based on your location and interests. With detailed <span class="text-blue-500">recommendations</span> and <span class="text-blue-500">weather forecasts</span>, this app helps you discover new and exciting things to do in your community, rain or shine. Experience the <span class="text-blue-500">cutting-edge</span> of travel technology today with The <span class="text-blue-500">AI Adventure Assistant</span>, powered by OpenAI's state-of-the-art AI technology.</p>
+        <div class="flex justify-center mt-8">
+            <form method="GET" action="/apphome" class="flex items-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Start Your Adventure Here
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
