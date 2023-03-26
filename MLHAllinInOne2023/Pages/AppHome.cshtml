@@ -55,29 +55,38 @@
 @*Post Request View*@
 else 
 {
-<div>
-@*  
+    <div>
+    @*
     DEBUG: Shows selected intrests
     @ViewData["intrests"]
     @ViewData["otherIntrests"]
-*@
-    <div class="py-4">
-        <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
-        @for (var i = 0; i < Model.ResponseArray.Length; i++)
-        {
-            @*Account for blank outputs*@
-            @if (@Model.ResponseArray[i] != "")
+    *@
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
+            @for (var i = 0; i < Model.ResponseArray.Length; i++)
             {
-                <div class="flex items-center mb-4">
-                    <button id="submit-@i" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mr-2">
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                    <h4 class="text-lg">@Model.ResponseArray[i]</h4>
-                </div>
+                @*Account for blank outputs*@
+                @if (@Model.ResponseArray[i] != "")
+                {
+                    <div class="flex items-center mb-4">
+                        <h4 class="text-lg">@Model.ResponseArray[i]</h4>
+                    </div>
+                    @if (i < Model.ResponseArray.Length - 1) // Add line divider only if it's not the last item
+                    {
+                        <hr class="my-2 border-gray-300">
+                    }
+                }
             }
-        }
+        </div>
+        <div class="flex justify-center mt-8">
+            <form method="GET" action="/apphome" class="flex items-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Go back
+                </button>
+            </form>
+        </div>
     </div>
-</div>
+
 }
 
 <style>
