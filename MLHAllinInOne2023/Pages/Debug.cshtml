@@ -27,6 +27,13 @@
     ie wind speed, temperature, humidity, etc etc. Whichever data properties you decided to use from the JSON
 -->
 
+<h4>Temperature : @Model.weatherModel._weather.Temperature</h4>
+
+<h4>Feels Like : @Model.weatherModel._weather.FeelsLike</h4>
+
+<h4>Rain Amount (inches) : @Model.weatherModel._weather.RainAmount</h4>
+
+<h4>Condition : @Model.weatherModel._weather.Text</h4>
 @*<h4>@Model.weatherModel._jsonOutput</h4>*@
 @{
     foreach(var choice in Model.chatResponse.choices)
