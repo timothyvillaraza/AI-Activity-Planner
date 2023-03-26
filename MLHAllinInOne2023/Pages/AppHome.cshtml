@@ -56,9 +56,11 @@
 else 
 {
 <div>
+@*  
+    DEBUG: Shows selected intrests
     @ViewData["intrests"]
     @ViewData["otherIntrests"]
-
+*@
     <div class="py-4">
         <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
         @for (var i = 0; i < Model.ResponseArray.Length; i++)
