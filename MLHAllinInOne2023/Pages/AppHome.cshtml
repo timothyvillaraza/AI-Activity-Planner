@@ -174,7 +174,9 @@ else
 
 <script>
     $(document).ready(function () {
+        // Add click event listener to each button element
         $('button[id^="submit-"]').on('click', function () {
+            // Get the text of the adjacent h4 element
             var responseText = $(this).siblings('h4').text();
             alert(responseText);
         });
