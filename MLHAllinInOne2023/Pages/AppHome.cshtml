@@ -6,7 +6,7 @@
 @if (Model.ShowForm)
 {
  @*Checklist*@
-<h1> Int </h1>
+<h1> Interests </h1>
     <form method="post">
         @* creates checkboxes for all pre determined intrests *@
         <label><input type="checkbox" asp-for="art"/>art</label><br>
@@ -37,6 +37,9 @@
     <br>
     @ViewData["otherIntrests"]
     <br>*@
-    @ViewData["Response"]
-
+    <h1> Itinerary </h1>
+    @foreach(var response in Model.ResponseArray){
+        <h4>@response</h4>
+        <br>
+    }
 </div>

@@ -16,8 +16,9 @@ namespace MLHAllinInOne2023.Pages
 
      
         //TODO - figure out how to populate this prompt with something the user inputs
-
+        public string[] ResponseArray { get; set; }
         public BrowserModel bParser { get; set; }
+
 
         private readonly ILogger<AppHomeModel> _logger;
         private readonly IHttpContextAccessor _contextAccessor;
@@ -30,6 +31,7 @@ namespace MLHAllinInOne2023.Pages
             _contextAccessor = httpContextAccessor;
             _configuration = configuration;
             _httpClient = new HttpClient();
+            ResponseArray = new string[0];
 
         }
 
@@ -85,7 +87,9 @@ namespace MLHAllinInOne2023.Pages
             {
                 Response += @choice.message.content;
             }
-            ViewData["Response"] = Response;
+
+            ResponseArray = Response.Split("\n");
+            ResponseArray= ResponseArray.Skip(1).ToArray();
         }
     }
 }
