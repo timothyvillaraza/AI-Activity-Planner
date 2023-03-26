@@ -1,0 +1,30 @@
+﻿@page
+@model MLHAllinInOne2023.Pages.AppHomeModel
+
+@{
+}
+@if (Model.ShowForm)
+{
+ @*Checklist*@
+<h1> Int </h1>
+    <form method="post">
+        @foreach (var intrest in Model.intrests)
+        {
+            
+            <input type="checkbox" id="@intrest" name="@intrest" value=@intrest>
+
+            <label for=@intrest>@intrest</label>
+
+            <br>
+        }
+
+    @*Open-ended Intrests*@
+        <label asp-for="otherIntrests"> Other Intrests:</label><br>
+        <input type="text" id="otherIntrests" name="otherIntrests"><br>
+        <button type="submit">Submit</button>
+    </form>
+}
+
+<div>
+    @ViewData["Message"]
+</div>
