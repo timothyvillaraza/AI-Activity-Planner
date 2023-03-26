@@ -1,5 +1,6 @@
 ﻿@page
 @model DebugModel
+@using MLHAllinInOne2023.Services;
 @{
     ViewData["Title"] = "Error";
 }
@@ -33,3 +34,14 @@
 <h4>Rain Amount (inches) : @Model.weatherModel._weather.RainAmount</h4>
 
 <h4>Condition : @Model.weatherModel._weather.Text</h4>
+@*<h4>@Model.weatherModel._jsonOutput</h4>*@
+@{
+    foreach(var choice in Model.chatResponse.choices)
+    {
+        <h4>Text : @choice.message.content</h4>
+    }
+}
+
+@*<h4>ChatGPTText : @Model.chatResponse.Text</h4>
+
+<h4>ChatGPTChoices : @Model.chatResponse.Choices</h4>*@
