@@ -20,7 +20,7 @@ namespace MLHAllinInOne2023.Services
         private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
         // var apiKey = _configuration.GetValue<string>("OpenAI:ApiKey");  // TODO: Setup Config File
-        private readonly string apiKey = "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";
+        private readonly string apiKey = "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";
         public OpenAIService(IConfiguration configuration, HttpClient httpClient)
         {
             _configuration = configuration;

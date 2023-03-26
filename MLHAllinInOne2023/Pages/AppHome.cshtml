@@ -8,7 +8,8 @@
 @if (Model.ShowForm) 
 {
  @*Checklist*@
-    <h1 class="text-4xl font-bold text-gray-800 py-8">Interests</h1>
+    <h1 class="text-4xl font-bold text-gray-800 py-8 text-center text-blue-500">The AI Adventure Assistant</h1>
+    <h2 class="text-2xl font-bold text-gray-800 py-8">Interests</h2>
 
     <form method="post">
         <div class="checkbox-container" onclick="this.classList.toggle('selected-art'); document.querySelector('#art').checked = this.classList.contains('selected-art')">
@@ -56,11 +57,11 @@
 else 
 {
     <div>
-    @*
-    DEBUG: Shows selected intrests
-    @ViewData["intrests"]
-    @ViewData["otherIntrests"]
-    *@
+        @*
+        DEBUG: Shows selected intrests
+        @ViewData["intrests"]
+        @ViewData["otherIntrests"]
+        *@
         <div class="max-w-3xl mx-auto">
             <h1 class="text-2xl font-bold mb-4">Itinerary</h1>
             @for (var i = 0; i < Model.ResponseArray.Length; i++)
@@ -69,6 +70,9 @@ else
                 @if (@Model.ResponseArray[i] != "")
                 {
                     <div class="flex items-center mb-4">
+                        <button class="mr-2 p-1 bg-transparent text-gray-500 hover:text-gray-800 refresh-btn">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
                         <h4 class="text-lg">@Model.ResponseArray[i]</h4>
                     </div>
                     @if (i < Model.ResponseArray.Length - 1) // Add line divider only if it's not the last item
@@ -78,6 +82,8 @@ else
                 }
             }
         </div>
+
+
         <div class="flex justify-center mt-8">
             <form method="GET" action="/apphome" class="flex items-center">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -181,13 +187,12 @@ else
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
 <script>
     $(document).ready(function () {
-        // Add click event listener to each button element
-        $('button[id^="submit-"]').on('click', function () {
-            // Get the text of the adjacent h4 element
-            var responseText = $(this).siblings('h4').text();
-            alert(responseText);
+        $('.refresh-btn').on('click', function () {
+            var text = $(this).next('h4').text();
+            alert(text);
         });
     });
 </script>
